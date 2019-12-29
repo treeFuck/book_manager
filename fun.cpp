@@ -142,9 +142,9 @@ void init(BTree &book, BTree &author, BTree &reader, LinkNode *&Log) {
 	addBookFun(book, 4, "三国演义", author, 4);
 	addBookFun(book, 5, "斗罗大陆", author, 5);
 	addBookFun(book, 6, "斗破苍穹", author, 6);
-	addBookFun(book, 7, "龙族IV——悼亡者归来", author, 7);
-	addBookFun(book, 8, "龙族II——悼亡者之瞳", author, 7);
-	addBookFun(book, 9, "龙族I——火之晨曦", author, 7);
+	addBookFun(book, 7, "龙族IV", author, 7);
+//	addBookFun(book, 8, "龙族II——悼亡者之瞳", author, 7);
+//	addBookFun(book, 9, "龙族I——火之晨曦", author, 7);
 	//初始化读者
 	addReader(reader, 111, "小红");
 	addReader(reader, 222, "小明");
