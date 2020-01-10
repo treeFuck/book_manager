@@ -598,15 +598,55 @@ void readerData(BTree &t, LinkNode *&Log) {
 	}
 }
 
+// 以凹入表的形式显示B树
+void AoTuPrint(BTree t, int depth)
+{
+	
+	int i, j;
+	if (t == NULL)
+		return;
+	printf("\t");
+	for (j = 0; j < depth; j++)
+	{
+		printf("\t\t");
+	}
+	for (i = 1; i <= t->keynum; i++)
+	{
+		printf("[ ");
+		printf("%d: ", t->key[i]);
+		if(t->rcd[i]->type == 0) {
+			printf("《%s》",t->rcd[i]->book->name);
+		} else if(t->rcd[i]->type == 1) {
+			printf("%s",t->rcd[i]->author->name);
+		} else if(t->rcd[i]->type == 2) {
+			printf("%s",t->rcd[i]->reader->name);
+		}
+		printf(" ]");
+		if (i != t->keynum)
+		{
+			printf(",");
+		}
+	}
+	putchar('\n');
+	for (i = 0; i <= t->keynum; i++)
+	{
+		AoTuPrint(t->ptr[i], depth + 1);
+	}
+}
+
 // 查看全部图书（打印B树）
 void printBook(BTree &book, BTree &author, BTree &reader, LinkNode *&Log) {
 	printf("\n【全部图书】\n");
-	PrintBTree(book); 
+	AoTuPrint(book, 0);
+	//PrintBTree(book); 
 	printf("\n【全部作者】\n");
-	PrintBTree(author); 
+	AoTuPrint(author, 0);
+	//PrintBTree(author); 
 	printf("\n【全部读者】\n");
-	PrintBTree(reader); 
+	AoTuPrint(reader, 0);
+	//PrintBTree(reader); 
 }	
+
 
 // 功能表
 void menu()
